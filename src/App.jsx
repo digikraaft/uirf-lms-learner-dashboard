@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { useIntl } from '@edx/frontend-platform/i18n';
@@ -6,7 +6,7 @@ import { logError } from '@edx/frontend-platform/logging';
 import { initializeHotjar } from '@edx/frontend-enterprise-hotjar';
 
 import { ErrorPage, AppContext } from '@edx/frontend-platform/react';
-import FooterSlot from '@openedx/frontend-slot-footer';
+// import { FooterSlot } from '@edx/frontend-component-footer';
 import { Alert } from '@openedx/paragon';
 
 import { RequestKeys } from 'data/constants/requests';
@@ -23,11 +23,13 @@ import track from 'tracking';
 import fakeData from 'data/services/lms/fakeData/courses';
 
 import AppWrapper from 'containers/WidgetContainers/AppWrapper';
-import LearnerDashboardHeader from 'containers/LearnerDashboardHeader';
+// import LearnerDashboardHeader from 'containers/LearnerDashboardHeader';
 
 import { getConfig } from '@edx/frontend-platform';
 import messages from './messages';
 import './App.scss';
+import Sidebar from './containers/Sidebar/Sidebar';
+import Header from './containers/Header/Header';
 
 export const App = () => {
   const { authenticatedUser } = React.useContext(AppContext);
@@ -71,28 +73,45 @@ export const App = () => {
       }
     }
   }, [authenticatedUser, loadData]);
+
+  const [isInstructor, setIsInstructor] = useState(false);
+  const [isAdmin] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState('dashboard');
+
   return (
     <>
       <Helmet>
         <title>{formatMessage(messages.pageTitle)}</title>
         <link rel="shortcut icon" href={getConfig().FAVICON_URL} type="image/x-icon" />
       </Helmet>
-      <div>
+      <main className="bg-white w-full h-auto min-h-screen relative">
         <AppWrapper>
-          <LearnerDashboardHeader />
-          <main>
+          {/* <LearnerDashboardHeader /> */}
+          <Sidebar 
+            isInstructor={isInstructor} 
+            isAdmin={isAdmin} 
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}
+            menuOpen={menuOpen}
+            setIsInstructor={setIsInstructor}
+          />
+          <main id="main" className="w-full xl:w-auto xl:min-w-[calc(100%-256px)] xl:ml-[256px] h-auto xl:min-h-screen">
             {hasNetworkFailure
               ? (
                 <Alert variant="danger">
                   <ErrorPage message={formatMessage(messages.errorMessage, { supportEmail })} />
                 </Alert>
               ) : (
-                <Dashboard />
+                <>
+                  <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+                  <Dashboard />
+                </>
               )}
           </main>
         </AppWrapper>
-        <FooterSlot />
-      </div>
+        {/* <FooterSlot /> */}
+      </main>
     </>
   );
 };

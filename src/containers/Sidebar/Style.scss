@@ -1,0 +1,44 @@
+/* Custom Scrollbar Classes */
+.custom-scrollbar {
+    scrollbar-width: thin; /* For Firefox */
+  }
+  
+  /* For WebKit browsers (Chrome, Safari) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a0a0a0;
+  }
+  
+  /* Color Variants */
+  .custom-scrollbar-primary::-webkit-scrollbar-thumb {
+    background: #3b82f6; /* Tailwind's blue-500 */
+  }
+  
+  .custom-scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #4b5563; /* Tailwind's gray-600 */
+  }
+  
+  .custom-scrollbar-rounded::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+  }
+  
+  /* Thin Variant */
+  .custom-scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
