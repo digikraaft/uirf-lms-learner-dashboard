@@ -24,11 +24,11 @@ export const CourseCardImage = ({ cardId, orientation }) => {
   const image = (
     <>
       <img
-        className="pgn__card-image-cap show"
+        className="w-full h-full object-cover xl:bg-center"
         src={bannerImgSrc}
         alt={formatMessage(messages.bannerAlt)}
       />
-      {
+      {/* {
         isVerified && (
           <span
             className="course-card-verify-ribbon-container"
@@ -40,14 +40,14 @@ export const CourseCardImage = ({ cardId, orientation }) => {
             <img src={verifiedRibbon} alt={formatMessage(messages.verifiedBannerRibbonAlt)} />
           </span>
         )
-      }
+      } */}
     </>
   );
   return disableCourseTitle
     ? (<div className={wrapperClassName}>{image}</div>)
     : (
       <a
-        className={wrapperClassName}
+        className={'w-full'}
         href={homeUrl}
         onClick={handleImageClicked}
         tabIndex="-1"

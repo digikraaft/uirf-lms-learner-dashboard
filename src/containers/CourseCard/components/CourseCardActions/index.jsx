@@ -19,7 +19,7 @@ export const CourseCardActions = ({ cardId }) => {
   const { isArchived } = reduxHooks.useCardCourseRunData(cardId);
 
   return (
-    <ActionRow data-test-id="CourseCardActions">
+    <div data-test-id="CourseCardActions" className='mt-3 lg:mt-6 block'>
       <CourseCardActionSlot cardId={cardId} />
       {isEntitlement && (isFulfilled
         ? <ViewCourseButton cardId={cardId} />
@@ -32,7 +32,7 @@ export const CourseCardActions = ({ cardId }) => {
         ? <ResumeButton cardId={cardId} />
         : <BeginCourseButton cardId={cardId} />
       )}
-    </ActionRow>
+    </div>
   );
 };
 CourseCardActions.propTypes = {

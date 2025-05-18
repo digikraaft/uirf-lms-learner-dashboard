@@ -28,7 +28,7 @@ export const CoursesPanel = () => {
     <div className="w-full">
       {/* real logic at the top */}
       {/* {hasCourses ? <CourseListSlot courseListData={courseListData} /> : <NoCoursesViewSlot />}  */}
-      {hasCourses ? <NoCoursesViewSlot /> :  <CourseListSlot courseListData={courseListData} />}
+      {hasCourses ? <CourseListSlot courseListData={courseListData} />  : <NoCoursesViewSlot /> }
     </div>
   );
 };

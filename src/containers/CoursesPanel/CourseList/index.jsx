@@ -8,6 +8,8 @@ import {
 import CourseCard from 'containers/CourseCard';
 
 import { useIsCollapsed } from './hooks';
+import LearnerAnalytics from '../../Analytics/LearnerAnalytics';
+import CourseCardNew from '../../CourseCard/CourseCardNew';
 
 export const CourseList = ({ courseListData }) => {
   const {
@@ -21,10 +23,20 @@ export const CourseList = ({ courseListData }) => {
           <ActiveCourseFilters {...filterOptions} />
         </div>
       )}
-      <div className="d-flex flex-column flex-grow-1">
-        {visibleList.map(({ cardId }) => (
-          <CourseCard key={cardId} cardId={cardId} />
-        ))}
+      <div className="w-full 2xl:w-[90%] px-[4%] pt-[20%] md:pt-[10%]  xl:pt-[8%] pb-10">
+        <div className='w-full'>
+          <LearnerAnalytics/>
+          <div className='w-full mt-16 space-y-4'>
+            {visibleList.map(({ cardId }) => (
+              <CourseCardNew key={cardId} cardId={cardId} />
+            ))}
+          </div>
+        </div>
+        {/* <div className='w-full'>
+          {visibleList.map(({ cardId }) => (
+            <CourseCard key={cardId} cardId={cardId} />
+          ))}
+        </div> */}
         {numPages > 1 && (
           <Pagination
             variant={isCollapsed ? 'reduced' : 'secondary'}

@@ -7,13 +7,13 @@ import { CheckCircle } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
 import { utilHooks, reduxHooks } from 'hooks';
-import Banner from 'components/Banner';
+// import div from 'components/div';
 
 import messages from './messages';
 
 const { useFormatDate } = utilHooks;
 
-export const CertificateBanner = ({ cardId }) => {
+export const Certificatediv = ({ cardId }) => {
   const certificate = reduxHooks.useCardCertificateData(cardId);
   const {
     isAudit,
@@ -30,16 +30,16 @@ export const CertificateBanner = ({ cardId }) => {
 
   if (certificate.isRestricted) {
     return (
-      <Banner variant="danger">
+      <div variant="danger">
         { supportEmail ? formatMessage(messages.certRestricted, { supportEmail: emailLink(supportEmail) }) : formatMessage(messages.certRestrictedNoEmail)}
         {isVerified && '  '}
         {isVerified && (billingEmail ? formatMessage(messages.certRefundContactBilling, { billingEmail: emailLink(billingEmail) }) : formatMessage(messages.certRefundContactBillingNoEmail))}
-      </Banner>
+      </div>
     );
   }
   if (certificate.isDownloadable) {
     return (
-      <Banner variant="success" icon={CheckCircle}>
+      <div variant="success" icon={CheckCircle}>
         {formatMessage(messages.certReady)}
         {certificate.certPreviewUrl && (
           <>
@@ -49,47 +49,47 @@ export const CertificateBanner = ({ cardId }) => {
             </Hyperlink>
           </>
         )}
-      </Banner>
+      </div>
     );
   }
   if (!isPassing) {
     if (isAudit) {
       return (
-        <Banner>
+        <div>
           {formatMessage(messages.passingGrade, { minPassingGrade })}
-        </Banner>
+        </div>
       );
     }
     if (isArchived) {
       return (
-        <Banner variant="warning">
+        <div variant="warning">
           {formatMessage(messages.notEligibleForCert)}
           {'  '}
           <Hyperlink isInline destination={progressUrl}>{formatMessage(messages.viewGrades)}</Hyperlink>
-        </Banner>
+        </div>
       );
     }
     return (
-      <Banner variant="warning">
+      <div variant="warning">
         {formatMessage(messages.certMinGrade, { minPassingGrade })}
-      </Banner>
+      </div>
     );
   }
   if (certificate.isEarnedButUnavailable) {
     return (
-      <Banner>
+      <div>
         {formatMessage(
           messages.gradeAndCertReadyAfter,
           { availableDate: formatDate(certificate.availableDate) },
         )}
-      </Banner>
+      </div>
     );
   }
 
   return null;
 };
-CertificateBanner.propTypes = {
+Certificatediv.propTypes = {
   cardId: PropTypes.string.isRequired,
 };
 
-export default CertificateBanner;
+export default Certificatediv;

@@ -17,14 +17,14 @@ export const ConfirmPane = ({
   return (
     <>
       <h4>{formatMessage(messages.confirmHeader)}</h4>
-      <ActionRow>
-        <Button variant="tertiary" onClick={handleClose}>
+      <div className='flex items-center space-x-4 mt-3'>
+        <button className='border px-3 py-1.5 rounded-md border-grey text-black'  onClick={handleClose}>
           {formatMessage(messages.confirmCancel)}
-        </Button>
-        <Button onClick={handleConfirm}>
+        </button>
+        <button className='bg-cFF0 text-white px-3 py-1.5 rounded-md' onClick={handleConfirm}>
           {formatMessage(messages.confirmUnenroll)}
-        </Button>
-      </ActionRow>
+        </button>
+      </div>
     </>
   );
 };

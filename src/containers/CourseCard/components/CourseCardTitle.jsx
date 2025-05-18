@@ -19,11 +19,11 @@ export const CourseCardTitle = ({ cardId }) => {
   return (
     <h3>
       {disableCourseTitle ? (
-        <span className="course-card-title" data-testid="CourseCardTitle">{courseName}</span>
+        <span className="text-sm xl:text-xl font-medium text-black mt-3" data-testid="CourseCardTitle">{courseName}</span>
       ) : (
         <a
           href={homeUrl}
-          className="course-card-title"
+          className="text-sm xl:text-xl font-medium text-black mt-3"
           data-testid="CourseCardTitle"
           onClick={handleTitleClicked}
         >

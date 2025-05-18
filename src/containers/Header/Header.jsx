@@ -6,15 +6,15 @@ export default function Header({ menuOpen, setMenuOpen }) {
 
   return (
     <div className="w-full">
-      <div className="z-40 fixed top-0 xl:py-5 w-full xl:flex items-center xl:bg-main px-4 md:px-8 lg:px-10 xl:px-[6%]">
-        <div className="hidden xl:block">
+      <div className="z-40 fixed top-0  w-full ">
+        <div className="hidden xl:block w-full xl:bg-main  px-[4%] py-2">
           <h1 className="font-semibold text-xl text-dim-black">
             {authenticatedUser?.name?.split(' ')[0]}'s Dashboard - Let's jump back in.
           </h1>
         </div>
-
-        <div className="w-full lg:w-auto flex items-center justify-between xl:hidden bg-white py-5">
-          <a href="home.html" className="h-10">
+        {/* Mobile Navbar */}
+        <div className="w-full lg:w-auto flex items-center justify-between xl:hidden bg-white py-2 px-[4%] border-b-2 border-[#E5E7EB] ">
+          <a href="home.html" className="h-7">
             <img
               src="../asset/ask-logo.png"
               alt="Africa sea of knowledge logo"
@@ -22,7 +22,7 @@ export default function Header({ menuOpen, setMenuOpen }) {
             />
           </a>
           <button onClick={() => setMenuOpen(!menuOpen)} className="inline xl:hidden"> {/* Toggle menuOpen */}
-            <img src="../asset/menu.svg" alt="" className="scale-95" />
+            <img src="../asset/menu.svg" alt="" className="scale-75" />
           </button>
         </div>
       </div>

@@ -4,18 +4,18 @@ import { AppContext } from '@edx/frontend-platform/react';
 import urls from 'data/services/lms/urls';
 import messages from './messages';
 import { reduxHooks } from 'hooks';
-import {  findCoursesNavClicked } from './hooks';
+// import {  findCoursesNavClicked } from './hooks';
 import { useIntl } from '@edx/frontend-platform/i18n';
 import './Style.scss';
 
 
 export default function Sidebar({ isInstructor, isAdmin, activeLink, setActiveLink, menuOpen, setIsInstructor }) {
     const { authenticatedUser } = React.useContext(AppContext);
-    const dashboard = reduxHooks.useEnterpriseDashboardData();
-    const { courseSearchUrl } = reduxHooks.usePlatformSettingsData();
-    const exploreCoursesClick = () => {
-      findCoursesNavClicked(urls.baseAppUrl(courseSearchUrl));
-    };
+    // const dashboard = reduxHooks.useEnterpriseDashboardData();
+    // const { courseSearchUrl } = reduxHooks.usePlatformSettingsData();
+    // const exploreCoursesClick = () => {
+    //   findCoursesNavClicked(urls.baseAppUrl(courseSearchUrl));
+    // };
     const { formatMessage } = useIntl();
     return (
       <aside className={`z-50 ${menuOpen ? 'block' : 'hidden'} xl:block xl:fixed xl:h-screen bg-white w-auto min-w-[256px] max-w-[15%] px-3.5 py-9 shadow-sm hover:overflow-y-auto custom-scrollbar custom-scrollbar-primary custom-scrollbar-rounded`}>

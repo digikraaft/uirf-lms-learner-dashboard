@@ -10,7 +10,7 @@ const messages = defineMessages({
   confirmCancel: {
     id: 'learner-dash.unenrollConfirm.confirm.cancel',
     description: 'Cancel action for confirm unenroll modal',
-    defaultMessage: 'Never mind',
+    defaultMessage: 'Cancel',
   },
   confirmUnenroll: {
     id: 'learner-dash.unenrollConfirm.confirm.unenroll',

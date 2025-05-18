@@ -23,6 +23,9 @@ $input-focus-box-shadow: $input-box-shadow; // hack to get upgrade to paragon 4.
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+ .no-underline {
+  text-decoration: none !important; 
+ }
 
 .alert.alert-info .alert-icon {
   color: black;

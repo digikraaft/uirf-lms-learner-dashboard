@@ -25,15 +25,7 @@ export const columnConfig = {
 };
 
 export const DashboardLayout = ({ children }) => {
-  const {
-    isCollapsed,
-    sidebarShowing,
-  } = hooks.useDashboardLayoutData();
-
-  const courseListColumnProps = sidebarShowing
-    ? columnConfig.courseList.withSidebar
-    : columnConfig.courseList.noSidebar;
-
+  
   return (
     <section className='w-full'>
       <div className='w-full'>
